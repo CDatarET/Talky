@@ -1,4 +1,6 @@
 import java.awt.event.*;
+import java.io.*;
+import java.net.*;
 import javax.swing.*;
 
 class Main{
@@ -6,6 +8,13 @@ class Main{
     public static void main(String[] args) {
         
         System.out.println("hello world");
+        try(Socket socket = new Socket("localhost",5000)){
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+            //code for socket will go here
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
 
         JFrame jframe = new JFrame("Talky");
         jframe.setSize(300, 400);
@@ -20,7 +29,7 @@ class Main{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String inputText = msg.getText();
-                System.out.println("Message: " + inputText);
+                writer.println("Message: " + inputText);
                 msg.setText("");
             }
         });
