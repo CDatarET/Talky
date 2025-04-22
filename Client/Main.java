@@ -6,16 +6,6 @@ import javax.swing.*;
 class Main{
 
     public static void main(String[] args) {
-        
-        System.out.println("hello world");
-        try(Socket socket = new Socket("localhost",5000)){
-            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-            //code for socket will go here
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-
         JFrame jframe = new JFrame("Talky");
         jframe.setSize(300, 400);
         jframe.setLayout(null);
@@ -23,8 +13,11 @@ class Main{
 
         JTextArea msg = new JTextArea();
         msg.setBounds(20, 300, 250, 50);
-
-        msg.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "sendMessage");
+        
+        System.out.println("hello world");
+        try(Socket socket = new Socket("localhost",5000)){
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+            msg.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "sendMessage");
         msg.getActionMap().put("sendMessage", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -33,6 +26,10 @@ class Main{
                 msg.setText("");
             }
         });
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
 
         jframe.add(msg);
         jframe.setLocationRelativeTo(null);
