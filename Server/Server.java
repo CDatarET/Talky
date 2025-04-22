@@ -21,10 +21,7 @@ public class Server{
 
             writer1.println("You are connected to the server!");
             writer2.println("You are connected to the server!");
-
-            // Close connections when done
-            client1.close();
-            client2.close();
+            
         }
         catch(IOException e){
             e.printStackTrace();
