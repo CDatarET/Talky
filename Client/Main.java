@@ -18,7 +18,7 @@ class Main{
         try(Socket socket = new Socket("localhost",5000)){
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             msg.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "sendMessage");
-        msg.getActionMap().put("sendMessage", new AbstractAction() {
+            msg.getActionMap().put("sendMessage", new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String inputText = msg.getText();
