@@ -15,8 +15,11 @@ class Main{
         msg.setBounds(20, 300, 250, 50);
         
         System.out.println("hello world");
-        try(Socket socket = new Socket("localhost",5000)){
+        try{
+            Socket socket = new Socket("localhost",5000);
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            System.out.println(reader.readLine());
             msg.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "sendMessage");
             msg.getActionMap().put("sendMessage", new AbstractAction() {
             @Override
