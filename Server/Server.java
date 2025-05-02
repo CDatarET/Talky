@@ -16,11 +16,15 @@ public class Server{
 
             writer1.println("You are connected to the server!");
 
-            String line;
-            while(((line = reader1.readLine()) != null)){
-                System.out.println("client1: "+line);
+            try {
+                String line;
+                while(((line = reader1.readLine()) != null)){
+                    System.out.println("Client1: "+line);
+                } 
+            } 
+            catch (SocketException se){
+                System.out.println("Client 1 Disconnected");
             }
-            
         }
         catch(IOException e){
             e.printStackTrace();
