@@ -25,7 +25,7 @@ class Main{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String inputText = msg.getText();
-                writer.println("Message: " + inputText);
+                writer.println(inputText);
                 msg.setText("");
             }
         });
