@@ -13,6 +13,8 @@ class Main{
 
         JTextArea msg = new JTextArea();
         msg.setBounds(20, 300, 250, 50);
+        msg.setLineWrap(true);
+        msg.setWrapStyleWord(true);
         
         System.out.println("hello world");
         try{
