@@ -18,7 +18,8 @@ class Main{
         
         System.out.println("hello world");
         try{
-            Socket socket = new Socket("localhost",5000);
+            String ip = scan.next();
+            Socket socket = new Socket(ip,5000);
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println(reader.readLine());
