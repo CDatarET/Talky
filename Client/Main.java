@@ -4,7 +4,6 @@ import java.net.*;
 import javax.swing.*;
 
 class Main{
-
     public static void main(String[] args) {
         JFrame jframe = new JFrame("Talky");
         jframe.setSize(300, 400);
@@ -15,11 +14,14 @@ class Main{
         msg.setBounds(20, 300, 250, 50);
         msg.setLineWrap(true);
         msg.setWrapStyleWord(true);
+
+        JLabel jLabel = new JLabel("Enter IP address");
+        jframe.add(jLabel);
+        jLabel.setBounds(20, 20, 200, 30);
         
         System.out.println("hello world");
         try{
-            String ip = scan.next();
-            Socket socket = new Socket(ip,5000);
+            Socket socket = new Socket("192.168.1.13",5000);
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println(reader.readLine());
