@@ -5,6 +5,7 @@ import javax.swing.*;
 
 class Main{
     public static void main(String[] args) {
+        //main JFrame
         JFrame jframe = new JFrame("Talky");
         jframe.setSize(300, 400);
         jframe.setLayout(null);
